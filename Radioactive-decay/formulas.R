@@ -14,11 +14,11 @@ get_experimental_objects_number <- function(start_objects_number, half_life, tim
   life_probability_fun <- get_life_probability(half_life)
   current_objects_number <- start_objects_number
   current_time <- 0
-  res <- rep(NA, time_step_number)
+  life_probability <- life_probability_fun(time_step_length)
+  res <- c(start_objects_number, rep(NA, time_step_number))
   time_elapsed_seq <- seq(0, time_step_number * time_step_length, time_step_length)
-  for (i in 1:length(time_elapsed_seq)) {
+  for (i in 2:length(time_elapsed_seq)) {
     current_time <- time_elapsed_seq[i]
-    life_probability <- life_probability_fun(current_time)
     current_objects_number <- sum(runif(current_objects_number, 0, 1) < life_probability)
     res[i] <- current_objects_number
   }

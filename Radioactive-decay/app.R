@@ -29,8 +29,8 @@ ui <- fluidPage(
             numericInput(inputId = "step_length",
                         label = "Step length [years]",
                         min = 1,
-                        value = 5,
-                        max=1000)
+                        value = 1000,
+                        max=1000000000000)
         ),
 
         mainPanel(
